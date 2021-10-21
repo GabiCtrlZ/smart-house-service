@@ -1,0 +1,43 @@
+module.exports = {
+  parser: '@typescript-eslint/parser',
+  plugins: [
+    '@typescript-eslint',
+    'filenames',
+    'no-loops',
+    'promise',
+  ],
+  extends: [
+    'airbnb-typescript',
+    'eslint:recommended',
+    'plugin:@typescript-eslint/eslint-recommended',
+    'plugin:@typescript-eslint/recommended',
+    'plugin:promise/recommended',
+  ],
+  rules: {
+    'filenames/match-regex': [2, '^[a-z-.]+$', true],
+    'no-console': 2,
+    'max-len': 'off',
+    'no-underscore-dangle': [2, { allow: ['_id', '_parsedOriginalUrl', '_parsedUrl'] }],
+    'no-unexpected-multiline': 'error',
+    'no-duplicate-imports': 'error',
+    'require-await': 'error',
+    'newline-after-var': 'error',
+    'newline-before-return': 'error',
+    'linebreak-style': 0,
+    'no-loops/no-loops': 2,
+    'object-curly-newline': ['error', {
+      ObjectExpression: { minProperties: 4, multiline: true, consistent: true },
+      ObjectPattern: { minProperties: 4, multiline: true, consistent: true },
+      ImportDeclaration: { minProperties: 4, multiline: true, consistent: true },
+      ExportDeclaration: { minProperties: 4, multiline: true, consistent: true },
+    }],
+    'no-unused-vars': 'off',
+    '@typescript-eslint/no-unused-vars': ['error'],
+    'semi': ['error', 'never'],
+    '@typescript-eslint/semi': 'off',
+  },
+  parserOptions: {
+    project: "tsconfig.json",
+    tsconfigRootDir: __dirname,
+  },
+}

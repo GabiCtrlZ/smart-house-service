@@ -1,0 +1,11 @@
+node_modules
+*.log
+Dockerfile*
+docker-compose*
+.dockerignore
+.git
+.gitignore
+*.md
+LICENSE
+.vscode
+tests
