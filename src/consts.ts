@@ -13,7 +13,10 @@ const {
   MONGO_AUTHSOURCE,
   WITHOUT_HELMET = false,
   JSON_LIMIT = '5mb',
-  DEV,
+  ENVIRONMENT,
+  AUTH0_ISSUER,
+  AUTH0_AUDIENCE,
+  WEB_URL = 'http://localhost:3000',
 } = process.env
 
 const SERVICE_NAME = `${packagejson.name}:${packagejson.version}`
@@ -49,6 +52,8 @@ const MONGO_ALL_OPTIONS = {
   ...MONGO_AUTH_OPTIONS,
 }
 
+const DEV = ENVIRONMENT === 'development'
+
 export {
   PORT,
   MONGO_URI,
@@ -58,4 +63,7 @@ export {
   WITHOUT_HELMET,
   JSON_LIMIT,
   DEV,
+  AUTH0_ISSUER,
+  AUTH0_AUDIENCE,
+  WEB_URL,
 }

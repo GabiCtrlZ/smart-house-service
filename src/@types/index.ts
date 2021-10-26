@@ -4,9 +4,13 @@ import {
   Request,
 } from 'express'
 
-export interface Example {
+export interface Agent {
   _id: string,
-  text: string,
+  type: 'ac' | 'light',
+  room: string,
+  active: boolean,
+  switched: string,
+  uri: string,
 }
 
 export type ErrorHandler = (
@@ -19,11 +23,8 @@ export type Init = (app: Application, callback: () => void, consts?: Record<any,
 
 export interface TransformedError {
   statusCode: number;
-  type: string;
-  code: string;
   message: string;
   stack: string;
-  additionalInfo?: any;
 }
 export type TransformError = (e: any) => TransformedError
 

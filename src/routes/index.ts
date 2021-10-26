@@ -1,8 +1,8 @@
 import { Router } from 'express'
-import get from './get'
+import agents from './agents'
 
 const router = Router()
 
-router.get('/:id', [], get)
+router.use('/agents', agents)
 
 export default router

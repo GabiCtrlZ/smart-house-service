@@ -9,10 +9,16 @@ import helmet from 'helmet'
 import cors from 'cors'
 import { logger } from '../utils'
 import { Init } from '../@types'
-import { DEV, JSON_LIMIT, WITHOUT_HELMET } from '../consts'
+import {
+  DEV,
+  JSON_LIMIT,
+  WITHOUT_HELMET,
+  WEB_URL,
+} from '../consts'
+import tokenValidate from './token-validate'
 
 const init: Init = (app, callback) => {
-  const allowedDomain = ['http://localhost:3000']
+  const allowedDomain = [WEB_URL]
 
   app.use(cors({ origin: DEV ? '*' : allowedDomain }))
   app.use(compression())
@@ -30,6 +36,7 @@ const init: Init = (app, callback) => {
 
   if (DEV) morganBody(app, { skip: (req) => req.url === '/healthz' })
 
+  app.use(tokenValidate)
   callback()
 
   app.use('/*', (req, res) => res.status(404).json())

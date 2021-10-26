@@ -1,6 +1,6 @@
 /* eslint-disable import/prefer-default-export */
-import Example from './example'
+import Agent from './agent'
 
 export {
-  Example,
+  Agent,
 }
