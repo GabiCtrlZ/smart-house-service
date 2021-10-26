@@ -35,7 +35,7 @@ const get: RequestHandler = async (req, res) => {
       timeout: 5000,
     })
 
-    agent.active = answer.data === 'on'
+    agent.active = answer.data === 1
     agent.switched = new Date().toISOString()
 
     logger.debug('saving current state in db')
