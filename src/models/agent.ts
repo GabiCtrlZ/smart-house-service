@@ -26,6 +26,10 @@ const agentSchema = new Schema<Agent>({
     type: Boolean,
     default: false,
   },
+  online: {
+    type: Boolean,
+    default: false,
+  },
 })
 
 export default model<Agent>('agent', agentSchema)

@@ -4,6 +4,7 @@ import app from './app'
 import errorHandler from './lib/error-handler'
 import { mongo, logger } from './utils'
 import { PORT } from './consts'
+import jobs from './cron-jobs'
 
 const bootstrap = async (expressApp: Express) => {
   if (!PORT) {
@@ -13,6 +14,7 @@ const bootstrap = async (expressApp: Express) => {
   }
 
   await mongo.connectDb()
+  await jobs.verifyAgentsHealth()
 
   return expressApp.listen(PORT, () => {
     logger.info(`server is up and running on ${PORT}`)

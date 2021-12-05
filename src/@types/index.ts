@@ -11,6 +11,7 @@ export interface Agent {
   active: boolean,
   switched: string,
   uri: string,
+  online: boolean,
 }
 
 export type ErrorHandler = (

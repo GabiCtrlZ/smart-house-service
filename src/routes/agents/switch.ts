@@ -22,7 +22,7 @@ const get: RequestHandler = async (req, res) => {
 
     logger.debug('querying database')
 
-    const agent = await Agent.findOne({ _id: id }, { __v: 0 }).orFail().exec()
+    const agent = await Agent.findOne({ _id: id, online: true }, { __v: 0 }).orFail().exec()
 
     const {
       uri,
